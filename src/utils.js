@@ -152,10 +152,10 @@ export default (
   }
 
   const beltLength = roundValue(
-    2 * center_distance +
+    (2 * center_distance) +
       ((3.14 / 2) * (diameter_driven + diameter_driver)) / 1000 +
       (diameter_driven - diameter_driver) ** 2 /
-        (4 * center_distance * 1000 ** 2)
+        (4 * center_distance * 1000 )
   );
 
   let requiredLengthOfBelt;
