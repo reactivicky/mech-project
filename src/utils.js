@@ -140,7 +140,7 @@ export default (
   if (+application_category === 1 || +application_category === 2) {
     brs = 0.023;
   } else {
-    brs = 0.289;
+    brs = 0.0289;
   }
 
   const beltRating = brs * (V / 10) * (ac / 180) * np;
