@@ -146,6 +146,10 @@ export default (
   const beltRating = brs * (V / 10) * (ac / 180) * np;
 
   const beltWidth = design_power / (brs * (V / 10) * (ac / 180) * np);
+  let error = null
+  if (beltWidth > 400) {
+    error = "THE DESIGN IS NOT SAFE"
+  }
 
   const beltLength = roundValue(
     2 * center_distance +
@@ -189,5 +193,6 @@ export default (
     beltLength,
     requiredLengthOfBelt,
     roundValue(pulleyWidth),
+    error
   ];
 };

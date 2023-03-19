@@ -1,3 +1,9 @@
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from '@chakra-ui/react'
 import calculateResults from "./utils";
 
 const Results = ({
@@ -20,6 +26,7 @@ const Results = ({
     beltLength,
     requiredLengthOfBelt,
     pulleyWidth,
+    error
   ] = calculateResults(
     power,
     speed,
@@ -31,7 +38,12 @@ const Results = ({
   );
 
   return (
-    <div>
+    <div className='results-container'>
+      {error && <Alert status='error'>
+        <AlertIcon />
+        <AlertTitle>Warning:</AlertTitle>
+        <AlertDescription>Your Design is unsafe</AlertDescription>
+      </Alert>}
       <p>Design Power: {design_power} KW</p>
       <p>Belt Type: {belt_type}</p>
       <p>Velocity of Belt Drive: {V} m/s</p>
