@@ -146,17 +146,25 @@ export default (
   const beltRating = brs * (V / 10) * (ac / 180) * np;
 
   const beltWidth = design_power / (brs * (V / 10) * (ac / 180) * np);
-  let error = null
+  let error = null;
   if (beltWidth > 400) {
-    error = "THE DESIGN IS NOT SAFE"
+    error = "THE DESIGN IS NOT SAFE";
   }
 
-  const beltLength = roundValue(
-    (2 * center_distance) +
-      ((3.14 / 2) * (diameter_driven + diameter_driver)) / 1000 +
-      (diameter_driven - diameter_driver) ** 2 /
-        (4 * center_distance * 1000 )
-  );
+  let beltLength;
+  if (belt_type === 1) {
+    beltLength =
+      2 * +center_distance +
+      ((3.14 / 2) * (+diameter_driven + +diameter_driver)) / 1000 +
+      Math.pow(+diameter_driven - +diameter_driver, 2) /
+        (4 * +center_distance * Math.pow(1000, 2));
+  } else {
+    beltLength =
+    2 * +center_distance +
+    ((3.14 / 2) * (+diameter_driven + +diameter_driver)) / 1000 +
+    Math.pow(+diameter_driven + +diameter_driver, 2) /
+      (4 * +center_distance * Math.pow(1000, 2));
+  }
 
   let requiredLengthOfBelt;
   let z;
@@ -190,9 +198,9 @@ export default (
     brs,
     beltRating,
     roundValue(beltWidth),
-    beltLength,
+    roundValue(beltLength),
     requiredLengthOfBelt,
     roundValue(pulleyWidth),
-    error
+    error,
   ];
 };
