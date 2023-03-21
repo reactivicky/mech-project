@@ -22,11 +22,11 @@ export default (
   if (+belt_drive === 1) {
     ac =
       180 -
-      ((diameter_driven - diameter_driver) / (center_distance * 1000)) * 60;
+      ((+diameter_driven - +diameter_driver) / (+center_distance * 1000)) * 60;
   } else {
     ac =
       180 +
-      ((diameter_driven + diameter_driver) / (center_distance * 1000)) * 60;
+      ((+diameter_driven + diameter_driver) / (+center_distance * 1000)) * 60;
   }
   if (ac <= 90) {
     ka = 1.68;
@@ -61,7 +61,7 @@ export default (
   } else {
     ka = 0.82;
   }
-  const val = power * ks * ka;
+  const val = +power * ks * ka;
   const design_power = roundValue(val);
 
   let belt_type;
@@ -71,7 +71,7 @@ export default (
     belt_type = "DUNLOP 'FORT'949g fabric belting";
   }
 
-  const V = (3.14 * diameter_driver * speed) / 60 / 1000;
+  const V = (3.14 * +diameter_driver * +speed) / 60 / 1000;
 
   let np = 0;
   if (V <= 10) {

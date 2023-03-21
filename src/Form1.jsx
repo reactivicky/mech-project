@@ -61,7 +61,7 @@ function Form1({
   };
 
   return (
-    <>
+    <div className="form_container">
       <NumberInput>
         <Text mb="8px">Enter the power to be transmitted in KW :</Text>
         <NumberInputField
@@ -148,10 +148,10 @@ function Form1({
         </Stack>
       </RadioGroup>
 
-      <Button colorScheme="blue" onClick={handleSubmit}>
+      <Button style={{alignSelf: 'center'}} colorScheme="blue" onClick={handleSubmit}>
         Submit
       </Button>
-    </>
+    </div>
   );
 }
 
