@@ -27,7 +27,7 @@ function Form1({
   setShowResults,
 }) {
   const handleChange = (e, type) => {
-    const value = e.target.value;
+    const value = +e.target.value;
     switch (type) {
       case "power":
         setPower(value);
